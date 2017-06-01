@@ -10,8 +10,6 @@
 
 The goals / steps of this project are the following:
 * Make a pipeline that finds lane lines on the road
-* Reflect on your work in a written report
-
 
 [//]: # (Image References)
 
@@ -20,7 +18,7 @@ The goals / steps of this project are the following:
 [image3]: ./test_images_output/cannied_solidWhiteCurve.jpg "Edge detected"
 [image4]: ./test_images_output/region_solidWhiteCurve.jpg "Region selected"
 [image5]: ./test_images_output/houghed_solidWhiteCurve.jpg "Hough space"
-[image6]: ./test_images_output/solidWhiteCurve.jpg "Grayscale"
+[image6]: ./test_images_output/solidWhiteCurve.jpg "Final Lane Enhanced"
 
 ---
 
@@ -38,7 +36,7 @@ Third, Edge detection using Cannied algorithm.
 
 Fourth, Select the region of the lane.
 
-Fifth, Convert the edges within the region of interests into lane lines using hough space.
+Fifth, Convert the edges within the region of interests into lane lines using hough space transform.
 
 Sixth, Finally extend lines got from step 5 to fill to the bottom of the image and upper bound. 
 
@@ -53,14 +51,15 @@ Sixth, Finally extend lines got from step 5 to fill to the bottom of the image a
 ### 2. Identify potential shortcomings with your current pipeline
 
 
-One potential shortcoming would be what would happen when extending the lines from step 5.
-The reason is because it it just extending to the bootom and upper bound of the image so it may not be on the actual lane.
+The left and right lines are drawn by just finding top and bottom points and drew a straight line. so all the points between are not being used in current logic.
+
+Another problem is in the step 6 i am extending the lines to top and bottom of the image.The method of extending to the bootom and top is just by calculating two points from based on the stop of the existing lines, so it may not be on the actual lane.
 
 
 
 
 ### 3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
+It can be improved by considering all the points between the top and bottom.
+And also the line extension should consider whether the slopes of the originally detected are changing wildly or not.
 
-Another potential improvement could be to ...
