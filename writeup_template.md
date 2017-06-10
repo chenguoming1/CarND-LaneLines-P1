@@ -39,6 +39,9 @@ Fourth, Select the region of the lane.
 Fifth, Convert the edges within the region of interests into lane lines using hough space transform.
 
 Sixth, Finally extend lines got from step 5 to fill to the bottom of the image and upper bound. 
+```
+Seven, Finalizing and generating the weighted image, for this step, i have added a outlier function to find outlier of the slopes. And also reusing the previous line, so that for those frame with the line is not detected will have default lanes.
+```
 
 ![Grey][image1]
 ![Blurred][image2]
@@ -49,8 +52,9 @@ Sixth, Finally extend lines got from step 5 to fill to the bottom of the image a
 
 
 ### 2. Identify potential shortcomings with your current pipeline
-
-
+```
+The current improvement is adding only ourlier function, and tracking lanes from previous frame, the rest is still the same as following previous comments:
+```
 The left and right lines are drawn by just finding top and bottom points and drew a straight line. so all the points between are not being used in current logic.
 
 Another problem is in the step 6 i am extending the lines to top and bottom of the image.The method of extending to the bootom and top is just by calculating two points from based on the stop of the existing lines, so it may not be on the actual lane.
